@@ -10,7 +10,7 @@
       <section id="todoapp">
         <header id="header">
           <h1>todos</h1>
-          <input type="text" id="new-todo" placeholder="What needs to be done?" />
+          {{view Ember.TextField id="new-todo" placeholder="what needs to be done?" valueBinding="newTitle" action="createTodo"}}
         </header>
 
           <section id="main">
@@ -60,6 +60,7 @@
     <script src="js/router.js"></script>
     <script src="js/data-store.js"></script>
     <script src="js/todo/todo-model.js"></script>
+    <script src="js/todo/todo-ctrl.js"></script>
   </body>
 </html>
 
