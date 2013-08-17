@@ -14,7 +14,16 @@ Todos.TodosController = Ember.ArrayController.extend({
 		this.set('newTitle', '');
 
 		todo.save(); //persist to datastore
-	}
+	},
+
+	remainingCount: function() {
+		return this.filterProperty('isCompleted', false).get('length');
+	}.property('@each.isCompleted'),
+
+	nounPlural: function() {
+		var remainingCount = this.get('remainingCount');
+		return 'todo item' + ((remainingCount === 1) ? '' : 's'); 
+	}.property('remainingCount')
 });
 
 Todos.TodoController = Ember.ObjectController.extend({
