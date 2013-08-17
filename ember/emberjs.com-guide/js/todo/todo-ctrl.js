@@ -16,3 +16,19 @@ Todos.TodosController = Ember.ArrayController.extend({
 		todo.save(); //persist to datastore
 	}
 });
+
+Todos.TodoController = Ember.ObjectController.extend({
+	isCompleted: function(key, value) {
+		var model = this.get('model');
+		if (typeof value === 'undefined') {
+			//get
+			return model.get('isCompleted');
+		}
+		else {
+			//set
+			model.set('isCompleted', value);
+			model.save();
+			return value;
+		}
+	}.property('model.isCompleted')
+});
