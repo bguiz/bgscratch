@@ -18,7 +18,7 @@
               {{#each controller itemController="todo"}}
                 <li {{bindAttr class="isCompleted:completed isEditing:editing"}}>
                   {{#if isEditing}}
-                    <input class="edit">
+                    {{view Todos.EditTodoView valueBinding="title"}}
                   {{else}}
                     {{view Ember.Checkbox checkedBinding="isCompleted" class="toggle"}}
                     <label {{action "editTodo" on="doubleClick"}}>{{title}}</label>
@@ -66,6 +66,7 @@
     <script src="js/data-store.js"></script>
     <script src="js/todo/todo-model.js"></script>
     <script src="js/todo/todo-ctrl.js"></script>
+    <script src="js/todo/todo-view.js"></script>
   </body>
 </html>
 
