@@ -5,6 +5,7 @@
 Todos.Router.map(function() {
 	this.resource('todos', {path: '/'}, function() {
 		this.route('active');
+		this.route('completed');
 	});
 });
 
@@ -20,19 +21,20 @@ Todos.TodosIndexRoute = Ember.Route.extend({
 	}
 });
 
-Todos.TodosActiveRoute = Ember.Route.extend({
-	model: function() {
-		return Todos.Todo.filter(function(todo) {
-			return (! todo.get('isCompleted'));
-		});
-	},
+var filteredTodosRoute = function(active) {
+	return {
+		model: function() {
+			return Todos.Todo.filter(function(todo) {
+				return (active !== todo.get('isCompleted'));
+			});
+		},
+		renderTemplate: function(controller) {
+			this.render('todos/index', {
+				controller: controller
+			});
+		}
+	};
+};
 
-	renderTemplate: function(controller) {
-		//override default render template, because convention over 
-		//config means that ember will look for a template called 
-		//'todos/active'
-		this.render('todos/index', {
-			controller: controller
-		});
-	}
-});
+Todos.TodosActiveRoute = Ember.Route.extend(filteredTodosRoute(true));
+Todos.TodosCompletedRoute = Ember.Route.extend(filteredTodosRoute(false));
