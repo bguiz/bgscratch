@@ -16,14 +16,32 @@ Todos.TodosController = Ember.ArrayController.extend({
 		todo.save(); //persist to datastore
 	},
 
+	deleteCompleted: function() {
+		var completed = this.filterProperty('isCompleted', true);
+		completed.invoke('deleteRecord');
+		this.get('store').commit();
+	},
+
+	/* Display properties */
+
 	remainingCount: function() {
 		return this.filterProperty('isCompleted', false).get('length');
 	}.property('@each.isCompleted'),
 
+	completedCount: function() {
+		var remainingCount = this.get('remainingCount');
+		var totalCount = this.get('length');
+		return totalCount - remainingCount;
+	}.property('remainingCount'),
+
 	nounPlural: function() {
 		var remainingCount = this.get('remainingCount');
 		return 'todo item' + ((remainingCount === 1) ? '' : 's'); 
-	}.property('remainingCount')
+	}.property('remainingCount'),
+
+	hasCompleted: function() {
+		return this.get('completedCount') > 0;
+	}.property('completedCount')
 });
 
 Todos.TodoController = Ember.ObjectController.extend({

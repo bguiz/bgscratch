@@ -50,9 +50,11 @@
               </li>
             </ul>
 
-            <button id="clear-completed">
-              Clear completed (1)
-            </button>
+            {{#if hasCompleted}}
+              <button id="clear-completed" {{action "deleteCompleted"}}>
+                Clear completed ({{completedCount}})
+              </button>
+            {{/if}}
           </footer>
       </section>
       <footer id="info">
