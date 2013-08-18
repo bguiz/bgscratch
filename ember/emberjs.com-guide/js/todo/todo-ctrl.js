@@ -22,6 +22,19 @@ Todos.TodosController = Ember.ArrayController.extend({
 		this.get('store').commit();
 	},
 
+	allAreDone: function(key, value) {
+		if (typeof value === 'undefined') {
+			var remainingCount = this.get('remainingCount');
+			var totalCount = this.get('length');
+			return (totalCount > 0 && remainingCount < 1);
+		}
+		else {
+			this.setEach('isCompleted', value);
+			this.get('store').save();
+			return value;
+		}
+	}.property('remainingCount'),
+
 	/* Display properties */
 
 	remainingCount: function() {
@@ -41,13 +54,7 @@ Todos.TodosController = Ember.ArrayController.extend({
 
 	hasCompleted: function() {
 		return this.get('completedCount') > 0;
-	}.property('completedCount'),
-
-	allAreDone: function() {
-		var remainingCount = this.get('remainingCount');
-		var totalCount = this.get('length');
-		return (totalCount > 0 && remainingCount < 1);
-	}.property('remainingCount')
+	}.property('completedCount')
 });
 
 Todos.TodoController = Ember.ObjectController.extend({
