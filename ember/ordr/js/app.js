@@ -35,6 +35,9 @@ App.TablesRoute = Ember.Route.extend({
 	}
 });
 
+//an array controller expects its model to be a list of object models
+App.TablesController = Ember.ArrayController.extend();
+
 //create a simple data model
 //ember expects the name of the data store object to be store
 //this is the object it will look in when you used .find(), etc, to get any models

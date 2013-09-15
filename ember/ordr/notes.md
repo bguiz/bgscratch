@@ -58,4 +58,9 @@
 	- View: App.TablesView
 	- Template: <script type="text/x-handlebars" data-template-name="tables">
 		- Has now been replaced with: <script type="text/x-handlebars" id="tables">
-	- Be careful about but captialisation and singular/plural forms
+	- Be careful about captialisation and singular/plural forms
+- You ask controllers for the models in templates
+	- not variables, or views, or directly from a model
+	- You ask controllers because they give you proxied access to the models:
+		- they manage a `model` property - so if you ask it for data, this is where it returns it from
+	- controller s can also have their own custom methods, which you can query from the templates
