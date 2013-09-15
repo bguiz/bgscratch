@@ -1,3 +1,6 @@
+# Ember
+
+## Intro
 
 - Ember's MVC is a lot more similar to the Desktop MVC
 	- similar to Rails
@@ -22,4 +25,16 @@
 		- But this means that naming all this is super-important - you must name them accoridng ot the expectations set by the ember framework
 		- Note that code generation is not written out to file - instead it is done each time the app is run, in memory
 			- This makes it immune to version changes
+- Errors
+	- Use the uniminified version during development because the error reporting is much better
+	- If there is a silent failure (no errors)
+		- Make sure you understand the framework
+		- Follow naming conventions
+		- Use the defaults
+		- Everything should be quite easy - so if it is super complicated, consider alternative approaches
 
+## Initialise
+
+- Use the provided starter to mimimise any version change fluctuations issues
+- Start web serve using ./bin/server
+- Visit localhost:3000
