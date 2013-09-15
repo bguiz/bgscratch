@@ -41,4 +41,11 @@
 
 # Simple app
 
+- Automatic detection of application template
+- Explicit naming of templates
+- Use of outlet to render other templates
+- Automatic geenration of index route
+
+# Router
+
 - 
