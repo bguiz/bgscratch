@@ -34,3 +34,16 @@ App.TablesRoute = Ember.Route.extend({
 		return App.Table.find();
 	}
 });
+
+//create a simple data model
+//ember expects the name of the data store object to be store
+//this is the object it will look in when you used .find(), etc, to get any models
+App.Store = DS.Store.extend({
+	//ember data is still ina  state of flux - so specifying a revision number is
+	//similar to specifying a API version
+	revision: 11,
+	//DS.FixtureAdapter is an object, but we use a string instead because that lets
+	//ember load/ initialise this when it wants to later on,
+	//instead of when this store is specified
+	adapter: 'DS.FixtureAdapter'
+});
