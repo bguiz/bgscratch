@@ -49,15 +49,19 @@
   template to hadle the #/tables route
   -->
   <script type="text/x-handlebars" data-template-name="tables">
-    <h2>Tables</h2>
-    <!--
-    we use the controller to proxy its model data.
-    since this template`s controller is an array controller we iterate over a list of models
-    -->
-    {{#each table in controller}}
-      <!-- displaying just the ids for now -->
-      {{table.id}}
-    {{/each}}
+    <div class="row">
+      <div class="four columns" id="tables">
+        <h2>Tables</h2>
+        <!--
+        we use the controller to proxy its model data.
+        since this template`s controller is an array controller we iterate over a list of models
+        -->
+        {{#each table in controller}}
+          <!-- displaying just the ids for now -->
+          {{table.id}}
+        {{/each}}
+      </div>
+    </div>
   </script>
 
     <script src="js/libs/jquery-1.8.3.min.js"></script>
