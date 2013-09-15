@@ -38,3 +38,7 @@
 - Use the provided starter to mimimise any version change fluctuations issues
 - Start web serve using ./bin/server
 - Visit localhost:3000
+
+# Simple app
+
+- 
