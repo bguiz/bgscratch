@@ -21,7 +21,11 @@
   No live reload, refresh the browser (localhost:3000)
   If no text appears, "Inspect element" in chrome dev tools and see console
   -->
-  <script type="text/x-handlebars">
+  <!--
+  By default, the very first handlbars template defined will be used as the application template, but we can also explicitly define its id.
+  Note that in 1.0.0 you can just use id instead of data-template-name
+  -->
+  <script type="text/x-handlebars" data-template-name="application">
     <h1>Ordr</h1>
   </script>
 
