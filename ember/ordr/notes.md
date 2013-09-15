@@ -64,3 +64,10 @@
 	- You ask controllers because they give you proxied access to the models:
 		- they manage a `model` property - so if you ask it for data, this is where it returns it from
 	- controller s can also have their own custom methods, which you can query from the templates
+- Chain of events:
+	- Router maps to a route object
+	- Route object specifies a model function (a  property)
+		- Ember passes the returned model to the controller
+		- App.MyModel.find() is used to look up a model instance from App.Store
+	- Controller proxies the model
+	- Template asks for the controller and is returned its proxied model
