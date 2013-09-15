@@ -48,4 +48,14 @@
 
 # Router
 
-- 
+- routes are central to the ways the ember works -and you should spend more time reasoning about the routes than most other ember objects
+- in a server MVC a controller is responsible for loading its own data; in ember h/w the controllers don't usually do this tasks, and instead route objects do so
+- Naming conventions:
+	- Router: this.resource('tables')
+	- Route: App.TablesRoute
+	- Controller: App.TablesController
+	- Model: App.Table
+	- View: App.TablesView
+	- Template: <script type="text/x-handlebars" data-template-name="tables">
+		- Has now been replaced with: <script type="text/x-handlebars" id="tables">
+	- Be careful about but captialisation and singular/plural forms
