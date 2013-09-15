@@ -51,7 +51,9 @@
 - routes are central to the ways the ember works -and you should spend more time reasoning about the routes than most other ember objects
 - in a server MVC a controller is responsible for loading its own data; in ember h/w the controllers don't usually do this tasks, and instead route objects do so
 - Naming conventions:
-	- Router: this.resource('tables')
+	- Router:
+		- this.resource('tables')
+		- this.resource('table', { path: ':table_id' })
 	- Route: App.TablesRoute
 	- Controller: App.TablesController
 	- Model: App.Table
@@ -77,3 +79,12 @@
 - using foundation css for boilerplate styles
 - more complex tempaltes can be split up using partials
 	- the partial template reuses the controler, model data and all other context of the template it ppears in
+
+# Nested routes
+
+- ember's router allows you to specif not just flat resources, but also nested resources
+	- this is where ember shines and shows its power
+	- one of the reasons why a nested router is powerful is that it allows you to have a hierarchy of controller present at the same time
+		- you can see the list of all tables, as well as the table details for a single table at the same time - and easily done
+	- "if your UI is nested, your routes should be nested" - wycats
+	

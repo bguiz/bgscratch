@@ -70,7 +70,14 @@
     -->
     {{#each table in controller}}
       <!-- displaying just the ids for now -->
-      {{table.id}}
+      {{#linkTo "table" table}}
+        <!--
+        The linkTo helper takes 2 arguments:
+        1. The name of the resource we defined in the router - must be in string
+        2. The model object that will be used to populate the resource - should be a model variable
+        -->
+        {{table.id}}
+      {{/linkTo}}
     {{/each}}
   </script>
 
