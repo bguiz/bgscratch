@@ -20,7 +20,7 @@
           </div>
       </div>
 
-      {{outlet}}
+      {{outlet}}       <!-- tell ember that this is where urls get rendered when the route changes -->
   </script>
 
   <script type="text/x-handlebars" id="posts">
@@ -37,6 +37,7 @@
                           <tr>
                             <td>
                                 {{#linkTo 'post' this}}
+                                <!-- triple squiggly brackets to tell handlebars not to escape HTML -->
                                 {{{title}}} <small class="muted">by {{author.name}}</small>
                                 {{/linkTo}}
                             </td>
@@ -59,6 +60,8 @@
       {{else}}
         <button {{action 'edit'}}>Edit</button>
       {{/if}}
+
+      <!-- triple squiggly brackets to tell handlebars not to escape HTML -->
       <h1>{{{title}}}</h1>
       <h2>by {{author.name}} <small class="muted">({{formatDate date}})</small></h2>
 
