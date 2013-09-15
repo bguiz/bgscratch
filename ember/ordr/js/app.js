@@ -47,3 +47,18 @@ App.Store = DS.Store.extend({
 	//instead of when this store is specified
 	adapter: 'DS.FixtureAdapter'
 });
+
+//define the model to be bound to this data store we have just created
+App.Table = DS.Model.extend();
+
+//models backed by a fixture adapter data store will be defined in a POJSO
+//the only requirement is that each of them has an id attribute - which may be
+//either a number or a string
+App.Table.FIXTURES = [
+	{id: 1},
+	{id: 2},
+	{id: 3},
+	{id: 5},
+	{id: 6},
+	{id: 7}
+];
