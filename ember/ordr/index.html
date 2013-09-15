@@ -70,11 +70,17 @@
     -->
     {{#each table in controller}}
       <!-- displaying just the ids for now -->
-      {{#linkTo "table" table}}
+      {{#linkTo "table" table class="panel six columns"}}
         <!--
         The linkTo helper takes 2 arguments:
         1. The name of the resource we defined in the router - must be in string
         2. The model object that will be used to populate the resource - should be a model variable
+        -->
+        <!--
+        Any other HTML attributes can go within the linkTo helper
+        Ember`s linkTo automatically toggles a CSS class of active only the one currently selected
+        Refresh the page and notice that when you click on each, the URL hash fragment updtes and the colour is toggled
+        Similarly if you update the URL, the current table is recoloured as it is active
         -->
         {{table.id}}
       {{/linkTo}}
