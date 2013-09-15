@@ -12,6 +12,7 @@
     <title>Ordr: Rstaurant Mnu Systm</title>
 
     <!-- Included CSS Files (Compressed) -->
+      <!-- using foundation css for boilerplate styles -->
     <link rel="stylesheet" href="css/foundation.css">
     <link rel="stylesheet" href="css/app.css">
   </head>
@@ -26,12 +27,15 @@
   Note that in 1.0.0 you can just use id instead of data-template-name
   -->
   <script type="text/x-handlebars" data-template-name="application">
-    <h1>Ordr</h1>
     <!--
     Handlebars use double squiggly braces to render values, variables, or things with special meaning in templates.
     `outlet` is one of them - a placeholder for the rendered output of other (child) controllers... like yield in rails
     -->
-    {{outlet}}
+    <div class="row">
+      <h1>Ordr</h1>
+      <hr />
+      <p>{{outlet}}</p>
+    </div>    
   </script>
 
   <!--
