@@ -71,3 +71,9 @@
 		- App.MyModel.find() is used to look up a model instance from App.Store
 	- Controller proxies the model
 	- Template asks for the controller and is returned its proxied model
+
+# Markup
+
+- using foundation css for boilerplate styles
+- more complex tempaltes can be split up using partials
+	- the partial template reuses the controler, model data and all other context of the template it ppears in
