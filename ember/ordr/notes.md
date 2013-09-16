@@ -90,4 +90,23 @@
 
 # Table detail
 
-
+- Controller types
+	- This is a key concept in Ember, and is part of what allows you to write minimal lines of code
+	- Ember.Controller
+		- proxies its own properties
+		- {{foo}} ==> myCtrl.get('foo')
+	- Ember.ObjectController
+		- proxies the properties of its model
+		- {{foo}} ==> myCtrl.model.get('foo')
+	- Ember.ArrayController
+		- proxies the properties of its model, but this time its model is expected to be an array
+		- {{#each controller}} ==> myCtrl.model.forEach(...)
+- Ember's default behaviour is to generate code for ember objects that you haven't defined, but you have defined another related ember object for, follwing a naming convention
+	- Ember's code generation is in memory - it runs every time (active code generation)
+	- Opposite of passive code generation - run once, and written out to files
+- Controller life cycle
+	- Server MVC programming usually has short live life cycles for controllers - only one is active at a time, instantiated per request
+	- Ember does not follow this; all controllers are instantiated at run time
+	- Only one instance of each controller is made, and it remains active throughout the duration the app is running
+	- The model data it the controller acts upon is swapped - the controller does not maintain any state
+	- Many controller are thus alive at the same time, and several will be actively rendering/ controlling views at the same time
