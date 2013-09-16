@@ -87,4 +87,7 @@
 	- one of the reasons why a nested router is powerful is that it allows you to have a hierarchy of controller present at the same time
 		- you can see the list of all tables, as well as the table details for a single table at the same time - and easily done
 	- "if your UI is nested, your routes should be nested" - wycats
-	
+
+# Table detail
+
+
