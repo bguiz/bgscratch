@@ -29,6 +29,22 @@ App.Router.map(function() {
 	//to the screen, one of them is the route object (singular)
 });
 
+//but if we want some data to be available across all controllers in the app..
+//we can use a special route - the application route. it has been generated implicitly all this while
+//- since we haven't needed to use it thus far, we have not needed to write it
+App.ApplicationRoute = Ember.Route.extend({
+    //the setup controller method is useful for setting up cross controller activity
+    //(when we need to work with multiple controllers)
+    setupController: function() {
+        //we can load data for any of the routes in this application in this method
+        //the data we want to set for the food controller is obtained using: App.Food.find()
+        //the food controller can be accessed using: this.controllerFor('food')
+        //TODO find out why it is this.controllerFor instead of App.controllerFor -
+        //the latter seems more intuitive, and using this seems more like an artefact of implementation detail
+        this.controllerFor('food').set('model', App.Food.find());
+    }
+});
+
 //name of route must correspond to the name of the resource above
 //custom objects in ember use extend as a means of inheritance
 App.TablesRoute = Ember.Route.extend({
@@ -64,6 +80,7 @@ App.TablesController = Ember.ArrayController.extend();
 //but how do we load the data for this controller?
 //- we cannot load the data in controllers
 //- there is no route object that corresponds to this controller to load the data into its model property
+//nested resources are one way to load resources from another controller
 App.FoodController = Ember.ArrayController.extend();
 
 App.Store = DS.Store.extend({
