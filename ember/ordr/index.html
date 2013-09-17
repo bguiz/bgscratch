@@ -136,6 +136,7 @@
         this is a less verbose alternative to the below
         - just each controller instead of each food in controller
         - and just name instead of food.name
+        use this when you do not need to be explicit
         (extra spaces in front of the squiggly brackets to escape for handlebars)
         { {#each controller}}
         <li>
@@ -148,7 +149,17 @@
         {{#each food in controller}}
         <li>
             <p>
-                {{food.name}}
+                <!--
+                Note that this template may be rendered without data before it is rendered with data
+                (data may be loaded asynchronously)
+                Furthermore, we need to define the template such that changes to the model can be
+                reflected in the rendered template when they are updated.
+                So this is wrong: <img src="{{food.imageUrl}}" alt=""/>
+                We use bindAttr to solve this problem. You can put any HTML attributes in them
+                but the values for all of them must be strings which will be evaluated as a handlebars expression
+                -->
+                <img {{bindAttr src="food.imageUrl"}} alt=""/>
+                <p>{{food.name}}</p>
             </p>
         </li>
         {{/each}}
