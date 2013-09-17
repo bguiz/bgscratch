@@ -9,24 +9,24 @@
 	- Controller
 		- Long lived - and stay around for the life of the app
 		- Not building a p[age, but an app
-		- Caching built itno the framework
+		- Caching built into the framework
 	- Model
 	- View
 		- Smarter interactive view objects
 	- Template
 - API changes
-	- often invoilves deleting code
+	- often involves deleting code
 	- flux can be bad/ hard
 - Explicit/. implicit
 	- Compared to backbone - you have to write a line of code for everything you do
 		- render: find template, re-render that on data changes, bind to data changes, manage memory of DOM events
 	- Convention over configuration
 		- Everything is done implicitly, and ember generates with conventional defaults. If you write code for something with a matching name, then ember ap uses them instead of auto-generated defaults.
-		- But this means that naming all this is super-important - you must name them accoridng ot the expectations set by the ember framework
+		- But this means that naming all this is super-important - you must name them according ot the expectations set by the ember framework
 		- Note that code generation is not written out to file - instead it is done each time the app is run, in memory
 			- This makes it immune to version changes
 - Errors
-	- Use the uniminified version during development because the error reporting is much better
+	- Use the un-minified version during development because the error reporting is much better
 	- If there is a silent failure (no errors)
 		- Make sure you understand the framework
 		- Follow naming conventions
@@ -44,7 +44,7 @@
 - Automatic detection of application template
 - Explicit naming of templates
 - Use of outlet to render other templates
-- Automatic geenration of index route
+- Automatic generation of index route
 
 # Router
 
@@ -60,7 +60,7 @@
 	- View: App.TablesView
 	- Template: <script type="text/x-handlebars" data-template-name="tables">
 		- Has now been replaced with: <script type="text/x-handlebars" id="tables">
-	- Be careful about captialisation and singular/plural forms
+	- Be careful about capitalisation and singular/plural forms
 - You ask controllers for the models in templates
 	- not variables, or views, or directly from a model
 	- You ask controllers because they give you proxied access to the models:
@@ -77,8 +77,8 @@
 # Markup
 
 - using foundation css for boilerplate styles
-- more complex tempaltes can be split up using partials
-	- the partial template reuses the controler, model data and all other context of the template it ppears in
+- more complex templates can be split up using partials
+	- the partial template reuses the controller, model data and all other context of the template it ppears in
 
 # Nested routes
 
@@ -86,7 +86,7 @@
 	- this is where ember shines and shows its power
 	- one of the reasons why a nested router is powerful is that it allows you to have a hierarchy of controller present at the same time
 		- you can see the list of all tables, as well as the table details for a single table at the same time - and easily done
-	- "if your UI is nested, your routes should be nested" - wycats
+	- "if your UI is nested, your routes should be nested" - @wycats
 
 # Table detail
 
@@ -101,7 +101,7 @@
 	- Ember.ArrayController
 		- proxies the properties of its model, but this time its model is expected to be an array
 		- {{#each controller}} ==> myCtrl.model.forEach(...)
-- Ember's default behaviour is to generate code for ember objects that you haven't defined, but you have defined another related ember object for, follwing a naming convention
+- Ember's default behaviour is to generate code for ember objects that you haven't defined, but you have defined another related ember object for, following a naming convention
 	- Ember's code generation is in memory - it runs every time (active code generation)
 	- Opposite of passive code generation - run once, and written out to files
 - Controller life cycle
@@ -110,3 +110,6 @@
 	- Only one instance of each controller is made, and it remains active throughout the duration the app is running
 	- The model data it the controller acts upon is swapped - the controller does not maintain any state
 	- Many controller are thus alive at the same time, and several will be actively rendering/ controlling views at the same time
+
+# Model data
+
