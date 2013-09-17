@@ -125,6 +125,36 @@
       </div>
   </script>
 
+  <!--
+  as this template is invoked via render (and not partial) it does not need a prefix of _
+  it also does not share the same context as its parent template (table) -
+  it has its own controller with proxies a different set of data
+  -->
+  <script type="text/x-handlebars" data-template-name="food">
+    <ul id="menu">
+        <!--
+        this is a less verbose alternative to the below
+        - just each controller instead of each food in controller
+        - and just name instead of food.name
+        (extra spaces in front of the squiggly brackets to escape for handlebars)
+        { {#each controller}}
+        <li>
+            <p>
+                { {name}}
+            </p>
+        </li>
+        { {/each}}
+        -->
+        {{#each food in controller}}
+        <li>
+            <p>
+                {{food.name}}
+            </p>
+        </li>
+        {{/each}}
+    </ul>
+  </script>
+
     <script src="js/libs/jquery-1.8.3.min.js"></script>
     <script src="js/libs/handlebars-1.0.0.rc.2.js"></script>
     <script src="js/libs/ember.js"></script>
