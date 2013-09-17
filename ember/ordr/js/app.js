@@ -57,7 +57,14 @@ App.TablesController = Ember.ArrayController.extend();
 
 //ember actually generates this controller automatically in memory when not specified
 //write this code only if you wish to override the default behaviour
-App.TableController = Ember.ObjectController.extend();
+//App.TableController = Ember.ObjectController.extend();
+
+//this is our custom controller
+//array controller because it manages a list of objects
+//but how do we load the data for this controller?
+//- we cannot load the data in controllers
+//- there is no route object that corresponds to this controller to load the data into its model property
+App.FoodController = Ember.ArrayController.extend();
 
 App.Store = DS.Store.extend({
 	revision: 11,
