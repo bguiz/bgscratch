@@ -82,7 +82,7 @@
 
 # Nested routes
 
-- ember's router allows you to specif not just flat resources, but also nested resources
+- ember's router allows you to specify not just flat resources, but also nested resources
 	- this is where ember shines and shows its power
 	- one of the reasons why a nested router is powerful is that it allows you to have a hierarchy of controller present at the same time
 		- you can see the list of all tables, as well as the table details for a single table at the same time - and easily done
@@ -113,3 +113,14 @@
 
 # Model data
 
+# Food Controller
+
+- Display a menu of the food items.
+    - This involves
+        - Implementing a custom food controller
+        - Loading it s data
+        - Rendering it s data from within another controller's template
+    - All the objects that we have used so far have been URL based
+        - e.g. tables and table
+        - ember can easily generate the other ember objects for these because it can infer it from the router resources
+        - h/w complex apps will often need models, views, and controller that are not based on URLs (and therefore have no resources)
