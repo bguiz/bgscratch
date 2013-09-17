@@ -124,3 +124,6 @@
         - e.g. tables and table
         - ember can easily generate the other ember objects for these because it can infer it from the router resources
         - h/w complex apps will often need models, views, and controller that are not based on URLs (and therefore have no resources)
+- Partial vs Render
+    - partial just is inline substitution of one template into another - the context remains the same throughout
+    - with render, OTOH, creates a new context - both data and interaction

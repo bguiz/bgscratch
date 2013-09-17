@@ -108,7 +108,21 @@
   For now we are simply displaying the id, since we do not have any extra data at this stage
   -->
   <script type="text/x-handlebars" data-template-name="table">
-    <h2>Table <span>{{id}}</span></h2>
+      <div class="row">
+          <div class="three columns">
+            <!--
+            render is a special handlebars helper - it:
+            - find the matching controller (food controller)
+            - and its data
+            - set up a new context
+            - render a template (food) using the controller, data, and context
+            -->
+            {{render "food"}}
+          </div>
+          <div class="nine columns">
+              <h2>Table <span>{{id}}</span></h2>
+          </div>
+      </div>
   </script>
 
     <script src="js/libs/jquery-1.8.3.min.js"></script>
