@@ -86,27 +86,44 @@ App.Store = DS.Store.extend({
 
 //define the model to be bound to this data store we have just created
 App.Table = DS.Model.extend({
+    //we define the relationship between the table model adn the table model: table belongs to a tab
+    //the tab model is referred to here as a string, for the same reason that DS fixture adapter is above:
+    //to allow ember to load/ init this object when it want to later on, instead of forcing it to do so right now
+    //exception to the rule: you should never use 'App' or 'App.' in a string anywhere else
+    //belongs to really means has one
     tab: DS.belongsTo('App.Tab')
 });
 
 App.Tab = DS.Model.extend({
+    //relationship between tab model: tab has many tab items
     tabItems: DS.hasMany('App.TabItem')
 });
 
 App.TabItem = DS.Model.extend({
+    //we define the the tab item model to contain an attribute
+    //this means that objects saved into this model should have a cents attribute of type number
+    //allowed attribute types are string, number, and boolean
     cents: DS.attr('number'),
+    //relationship between tab item model and food model: tab item belongs to food
     food: DS.belongsTo('App.Food')
 });
 
 App.Food = DS.Model.extend({
+    //food does not define any new relationships of its own
     name: DS.attr('string'),
     imageUrl: DS.attr('string'),
     cents: DS.attr('number')
 });
 
+//once the models have been defines, we populate them with data
+//full featured ember data can retrieve data from a server,
+//or you can do this manually by using AJAX to fetch JSON and populate the record manually from here
+//we'll use fixtures here so that we do not need to rely on having a functional server while develop this app (the client)
+//note that ember defines an id attribute for all models automatically, but we will need to specify this in the fixtures
+//parent objects need to keep track of the keys of their child objects
 App.Table.FIXTURES = [{
     id: 1,
-    tab: 1
+    tab: 1 //belongs to
 }, {
     id: 2,
     tab: 2
@@ -126,7 +143,7 @@ App.Table.FIXTURES = [{
 
 App.Tab.FIXTURES = [{
     id: 1,
-    tabItems: []
+    tabItems: [] //has many
 }, {
     id: 2,
     tabItems: []
@@ -144,6 +161,7 @@ App.Tab.FIXTURES = [{
     tabItems: []
 }];
 
+//ids do not need to start with 1 - use larger number for different classes for ease of debugging
 App.TabItem.FIXTURES = [{
     id: 400,
     cents: 1500,
