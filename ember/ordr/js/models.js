@@ -1,3 +1,5 @@
+//we are just going to copy the content of this file into app.js
+//simply populating the fixture model with more initial data so that we can develop it
 // Models
 App.Store = DS.Store.extend({
   revision: 11,
