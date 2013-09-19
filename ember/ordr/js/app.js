@@ -85,6 +85,8 @@ App.TablesController = Ember.ArrayController.extend();
 //nested resources are one way to load resources from another controller
 App.FoodController = Ember.ArrayController.extend();
 
+App.TabController = Ember.ObjectController.extend();
+
 App.Store = DS.Store.extend({
 	revision: 11,
 	adapter: 'DS.FixtureAdapter'

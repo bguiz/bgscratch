@@ -137,8 +137,19 @@
               { {controller}}
               -->
               <h2>Table <span>{{id}}</span></h2>
+              <!--
+              This will render the tab template just defined below - without any data for now
+              -->
+              {{render "tab"}}
           </div>
       </div>
+  </script>
+
+  <!--
+  new template to display the food items ordered by that particular table
+  -->
+  <script type="text/x-handlebars" data-template-name="tab">
+      <h3>Tab</h3>
   </script>
 
   <!--

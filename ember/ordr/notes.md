@@ -147,3 +147,6 @@
         - e.g. App.Table.find(1).get('name');
         - Note that fixture adapter simulates random delays in the fetching the data (even though it is in memory), so as to be more realistic about when the app starts fetching data over the network.
 
+# Tab cotroller
+
+
