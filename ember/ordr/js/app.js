@@ -85,7 +85,10 @@ App.TablesRoute = Ember.Route.extend({
 //});
 
 //an array controller expects its model to be a list of object models
-App.TablesController = Ember.ArrayController.extend();
+App.TablesController = Ember.ArrayController.extend({
+    //specify sort properties which define the order in which models will be presented to the templates
+    sortProperties: ['id']
+});
 
 //ember actually generates this controller automatically in memory when not specified
 //write this code only if you wish to override the default behaviour

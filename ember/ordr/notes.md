@@ -182,4 +182,5 @@
     - The exception is array controllers
 - auto-navigate to default route
 - alternate usage of setup controller
+- sort models in array controller
 
