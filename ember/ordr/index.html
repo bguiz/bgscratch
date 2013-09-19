@@ -172,6 +172,12 @@
                   <h3>Click a food item to add it</h3>
               </li>
           {{/each}}
+          <!--
+          We are now going to use a computed property to display the toal price of all items in this tab
+          -->
+          <li>
+              <h3>Total <span>${{cents}}</span></h3>
+          </li>
       </ul>
   </script>
 

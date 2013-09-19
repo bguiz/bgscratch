@@ -124,7 +124,17 @@ App.Table = DS.Model.extend({
 
 App.Tab = DS.Model.extend({
     //relationship between tab model: tab has many tab items
-    tabItems: DS.hasMany('App.TabItem')
+    tabItems: DS.hasMany('App.TabItem'),
+    cents: function() {
+        //within this function we have access to the other properties of this objects - tab items
+        return 100; //hard code this value for now
+    }.property('tabItems.@each.cents')
+    //we should also optimise this calculation by caching it so that it is only computed once
+    //in addition, it should be recomputed any time the tab items change, and notify ember of this change
+    //in ember we do this by calling .property after the closing squiggly brace of the function
+    //we should pass in a description of the circumstances under which this property should be recomputed
+    //this will often be the name of a simple property
+    //in this case however, we are going for something more complex, and ember provides a expression language for this
 });
 
 App.TabItem = DS.Model.extend({

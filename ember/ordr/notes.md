@@ -150,3 +150,5 @@
 # Tab controller
 
 - Using a custom controller to display data that is already available in another controller
+
+# Computed property
