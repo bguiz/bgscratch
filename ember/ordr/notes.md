@@ -171,3 +171,7 @@
 - "if you find that something is difficult to do or requires significant configuration away from the default, it should be a signal to you that you might be going in the wrong direction"
     - the default in ember are there for a reason, and communicate the best way to do things
 - note how when we update the models, ember knows to update the user interface - it doesn't have to be told to do so
+- ember employs "bubblin" in actions
+    - if the current controller does not handle the action, ember asks its parent controller, and its parent, until it goes all the way up to the top
+    - you can move the action to the parent controller directly
+    - or you can move the action to a route. if in a route, you need to put it within the events object of the route

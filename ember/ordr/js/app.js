@@ -75,7 +75,20 @@ App.TablesController = Ember.ArrayController.extend();
 
 //ember actually generates this controller automatically in memory when not specified
 //write this code only if you wish to override the default behaviour
-//App.TableController = Ember.ObjectController.extend();
+App.TableController = Ember.ObjectController.extend({
+    addFood: function(food) {
+        //in order to add food, we need to get a hold of the tab model that we are adding it to
+        //controller for table will return the controller with the model set to the currently
+        //selected/ active table
+        var table = this.get('model');
+        //note - no need to do table.get('tab').get('tabItems') here
+        var tabItems = table.get('tab.tabItems');
+        tabItems.createRecord({
+            food: food,
+            cents: food.get('cents')
+        });
+    }
+});
 
 //this is our custom controller
 //array controller because it manages a list of objects
@@ -84,19 +97,20 @@ App.TablesController = Ember.ArrayController.extend();
 //- there is no route object that corresponds to this controller to load the data into its model property
 //nested resources are one way to load resources from another controller
 App.FoodController = Ember.ArrayController.extend({
-    //we add the implementation for the action here in the food controller
-    addFood: function(food) {
-        //in order to add food, we need to get a hold of the tab model that we are adding it to
-        //controller for table will return the controller with the model set to the currently
-        //selected/ active table
-        var table = this.controllerFor('table').get('model');
-        //note - no need to do table.get('tab').get('tabItems') here
-        var tabItems = table.get('tab.tabItems');
-        tabItems.createRecord({
-            food: food,
-            cents: food.get('cents')
-        });
-    }
+//we decide to shift the addFood action to the parent controller, and let ember bubble the action
+//    //we add the implementation for the action here in the food controller
+//    addFood: function(food) {
+//        //in order to add food, we need to get a hold of the tab model that we are adding it to
+//        //controller for table will return the controller with the model set to the currently
+//        //selected/ active table
+//        var table = this.controllerFor('table').get('model');
+//        //note - no need to do table.get('tab').get('tabItems') here
+//        var tabItems = table.get('tab.tabItems');
+//        tabItems.createRecord({
+//            food: food,
+//            cents: food.get('cents')
+//        });
+//    }
 });
 
 App.TabController = Ember.ObjectController.extend();
