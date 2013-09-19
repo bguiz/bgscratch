@@ -163,3 +163,8 @@
     - Do *not* put view specific code in the model
     - You can put it in the controller
     - Or you could put in the template, via a handlebars helper
+
+# Action
+
+- linkTo is a built-in type of action - simply one that navigates to a particular URL/ route
+    - however, for many actions, it does not make sense them to have any URLs/ routes
