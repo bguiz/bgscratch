@@ -85,8 +85,17 @@ App.TablesController = Ember.ArrayController.extend();
 //nested resources are one way to load resources from another controller
 App.FoodController = Ember.ArrayController.extend({
     //we add the implementation for the action here in the food controller
-    addFood: function() {
-        console.log('Add food action called!');
+    addFood: function(food) {
+        //in order to add food, we need to get a hold of the tab model that we are adding it to
+        //controller for table will return the controller with the model set to the currently
+        //selected/ active table
+        var table = this.controllerFor('table').get('model');
+        //note - no need to do table.get('tab').get('tabItems') here
+        var tabItems = table.get('tab.tabItems');
+        tabItems.createRecord({
+            food: food,
+            cents: food.get('cents')
+        });
     }
 });
 
