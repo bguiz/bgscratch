@@ -45,6 +45,12 @@ App.ApplicationRoute = Ember.Route.extend({
     }
 });
 
+App.IndexRoute = Ember.Route.extend({
+    redirect: function() {
+        this.transitionTo('tables');
+    }
+});
+
 //name of route must correspond to the name of the resource above
 //custom objects in ember use extend as a means of inheritance
 App.TablesRoute = Ember.Route.extend({
