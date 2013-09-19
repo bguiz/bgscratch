@@ -127,3 +127,23 @@
 - Partial vs Render
     - partial just is inline substitution of one template into another - the context remains the same throughout
     - with render, OTOH, creates a new context - both data and interaction
+
+# Debugging
+
+- Error messages in ember are improving - some of them are still brutal - nothing happens, and no errors!
+- Tips
+    - Use the non-minified version. Contains extra assertions that will aid in debugging. These are stripped out in production versions
+    - Ensure that files are loaded in the correct order
+        - Refresh the browser with the console open
+    - Use App.Router.router.recognizer.name in the console
+        - Object that lists the resources hierarchy that ember knows about. Drill down to see the lot
+        - Useful for debugging routes
+    - Debugger
+        - set breakpoints on console log within methods of the ember objects
+    - Templates
+        - render the controller to inspect the controller object
+        - or log the controller to identify which controllers are which
+    - Console commands to inspect using the App namespace
+        - e.g. App.Table.find(1).get('name');
+        - Note that fixture adapter simulates random delays in the fetching the data (even though it is in memory), so as to be more realistic about when the app starts fetching data over the network.
+
