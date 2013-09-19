@@ -61,12 +61,14 @@ App.TablesRoute = Ember.Route.extend({
 //ember actually generates this route automatically in memory when it is not specified
 //only really need to write this code if you want to do anything special
 //you get this for free just by following the naming conventions
-// App.TableRoute = Ember.Route.extend({
-// 	//since this route has a path with a variable, we can access it using the params object
-// 	model: function(params) {
-// 		return App.Table.find(params.table_id);
-// 	}
-// });
+//We temporarily uncoimment this route to insert a debugger statement to inspect the value of params
+//App.TableRoute = Ember.Route.extend({
+//	//since this route has a path with a variable, we can access it using the params object
+//	model: function(params) {
+//        console.log('TableRoute#model params', params);
+//		return App.Table.find(params.table_id);
+//	}
+//});
 
 //an array controller expects its model to be a list of object models
 App.TablesController = Ember.ArrayController.extend();

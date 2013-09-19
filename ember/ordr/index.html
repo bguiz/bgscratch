@@ -83,6 +83,14 @@
     we use the controller to proxy its model data.
     since this template`s controller is an array controller we iterate over a list of models
     -->
+    <!--
+    log the controller to see the controller object in console
+    simply render the controller to see the controller name - which can be used to identify whether it is generated or defined by you, and of course also to double check that we are using the right controller
+    -->
+    <!--
+    { {log controller}}
+    { {controller}}
+    -->
     {{#each table in controller}}
       <!-- displaying just the ids for now -->
       {{#linkTo "table" table class="panel six columns"}}
@@ -120,9 +128,24 @@
             {{render "food"}}
           </div>
           <div class="nine columns">
+              <!--
+              log the controller to see the controller object in console
+              simply render the controller to see the controller name - which can be used to identify whether it is generated or defined by you, and of course also to double check that we are using the right controller
+
+              <!--
+              { {log controller}}
+              { {controller}}
+              -->
               <h2>Table <span>{{id}}</span></h2>
           </div>
       </div>
+  </script>
+
+  <!--
+  Using App.Router.router.recognizer.name we have identified that the route #/tables/
+  -->
+  <script type="text/x-handlebars" data-template-name="tables/index">
+      <h2>Please select a table</h2>
   </script>
 
   <!--
