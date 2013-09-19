@@ -155,3 +155,11 @@
 
 - Computed properties are available in both models and controllers
 - Property description: defining the other properties upon which they should be recomputed when changed, is very important
+
+# Helper
+
+- Writing a handlebars helper
+- Formatting data for display can be done in a number of different ways
+    - Do *not* put view specific code in the model
+    - You can put it in the controller
+    - Or you could put in the template, via a handlebars helper

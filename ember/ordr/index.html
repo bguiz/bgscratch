@@ -160,7 +160,7 @@
           {{#each tabItem in tabItems}}
           <li>
               <h3>
-                  {{tabItem.food.name}} <span>${{tabItem.cents}}</span>
+                  {{tabItem.food.name}} <span>{{money tabItem.cents}}</span>
               </h3>
           </li>
           {{else}}
@@ -176,7 +176,7 @@
           We are now going to use a computed property to display the toal price of all items in this tab
           -->
           <li>
-              <h3>Total <span>${{cents}}</span></h3>
+              <h3>Total <span>{{money cents}}</span></h3>
           </li>
       </ul>
   </script>

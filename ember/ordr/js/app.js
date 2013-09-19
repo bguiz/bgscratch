@@ -87,6 +87,11 @@ App.FoodController = Ember.ArrayController.extend();
 
 App.TabController = Ember.ObjectController.extend();
 
+//we define the handlebars helpers that we wish to use here
+Ember.Handlebars.registerBoundHelper('money', function(value) {
+    return '$' + parseFloat(value/100).toFixed(2);
+});
+
 App.Store = DS.Store.extend({
 	revision: 11,
 	adapter: 'DS.FixtureAdapter'
