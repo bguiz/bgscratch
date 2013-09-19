@@ -152,3 +152,6 @@
 - Using a custom controller to display data that is already available in another controller
 
 # Computed property
+
+- Computed properties are available in both models and controllers
+- Property description: defining the other properties upon which they should be recomputed when changed, is very important

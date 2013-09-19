@@ -127,7 +127,10 @@ App.Tab = DS.Model.extend({
     tabItems: DS.hasMany('App.TabItem'),
     cents: function() {
         //within this function we have access to the other properties of this objects - tab items
-        return 100; //hard code this value for now
+        //this is basically a map-reduce pattern (getEach is a type of map)
+        return this.get('tabItems').getEach('cents').reduce(function(acc, itemCents) {
+            return acc + itemCents;
+        }, 0);
     }.property('tabItems.@each.cents')
     //we should also optimise this calculation by caching it so that it is only computed once
     //in addition, it should be recomputed any time the tab items change, and notify ember of this change
