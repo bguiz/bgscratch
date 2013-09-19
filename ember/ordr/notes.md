@@ -168,3 +168,5 @@
 
 - linkTo is a built-in type of action - simply one that navigates to a particular URL/ route
     - however, for many actions, it does not make sense them to have any URLs/ routes
+- "if you find that something is difficult to do or requires significant configuration away from the default, it should be a signal to you that you might be going in the wrong direction"
+    - the default in ember are there for a reason, and communicate the best way to do things

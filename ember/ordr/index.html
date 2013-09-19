@@ -221,8 +221,16 @@
                 We use bindAttr to solve this problem. You can put any HTML attributes in them
                 but the values for all of them must be strings which will be evaluated as a handlebars expression
                 -->
-                <img {{bindAttr src="food.imageUrl"}} alt=""/>
-                <p>{{food.name}}</p>
+                <!--
+                Instead oif a linkTo, here we use an anchor tag to call an action
+                an action takes two parameters, the first is the name (a string) of the action to call,
+                and the second (optional) is the variable of that we pass to this action
+                This action will get called, by default, on the current controller, which is the food controller
+                -->
+                <a href="#" {{action "addFood" food}}>
+                    <img {{bindAttr src="food.imageUrl"}} alt=""/>
+                    <p>{{food.name}}</p>
+                </a>
             </p>
         </li>
         {{/each}}

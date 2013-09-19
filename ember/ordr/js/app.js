@@ -83,7 +83,12 @@ App.TablesController = Ember.ArrayController.extend();
 //- we cannot load the data in controllers
 //- there is no route object that corresponds to this controller to load the data into its model property
 //nested resources are one way to load resources from another controller
-App.FoodController = Ember.ArrayController.extend();
+App.FoodController = Ember.ArrayController.extend({
+    //we add the implementation for the action here in the food controller
+    addFood: function() {
+        console.log('Add food action called!');
+    }
+});
 
 App.TabController = Ember.ObjectController.extend();
 
