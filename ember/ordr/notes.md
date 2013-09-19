@@ -181,4 +181,5 @@
 - Delete any unnecessary ember objects - i.e. those that have empty definitions
     - The exception is array controllers
 - auto-navigate to default route
+- alternate usage of setup controller
 

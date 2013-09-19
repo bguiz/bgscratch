@@ -73,7 +73,15 @@ App.TablesRoute = Ember.Route.extend({
 //	model: function(params) {
 //        console.log('TableRoute#model params', params);
 //		return App.Table.find(params.table_id);
-//	}
+//	},
+//    //you can override setup controller if you wish.
+//    // the model created in the model function will be passed in here, along with the current controller
+//    setupController: function(controller, model) {
+//        //call to _super is likely to be deprecated in future version of ember
+//        this._super(controller, model);
+//        //this.controllerFor(...);
+//        //however, this should not be done most of the time - let ember assign the model for you
+//    }
 //});
 
 //an array controller expects its model to be a list of object models
