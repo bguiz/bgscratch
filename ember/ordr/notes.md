@@ -175,3 +175,9 @@
     - if the current controller does not handle the action, ember asks its parent controller, and its parent, until it goes all the way up to the top
     - you can move the action to the parent controller directly
     - or you can move the action to a route. if in a route, you need to put it within the events object of the route
+
+# Wrap up
+
+- Delete any unnecessary ember objects - i.e. those that have empty definitions
+    - The exception is array controllers
+

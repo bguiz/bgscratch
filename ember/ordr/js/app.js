@@ -113,7 +113,8 @@ App.FoodController = Ember.ArrayController.extend({
 //    }
 });
 
-App.TabController = Ember.ObjectController.extend();
+//Deleted as ember will automatically generate this anyway
+//App.TabController = Ember.ObjectController.extend();
 
 //we define the handlebars helpers that we wish to use here
 Ember.Handlebars.registerBoundHelper('money', function(value) {
@@ -124,8 +125,6 @@ App.Store = DS.Store.extend({
 	revision: 11,
 	adapter: 'DS.FixtureAdapter'
 });
-
-App.Table = DS.Model.extend();
 
 //models backed by a fixture adapter data store will be defined in a POJSO
 //the only requirement is that each of them has an id attribute - which may be
