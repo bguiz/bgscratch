@@ -36,5 +36,17 @@ module.exports = {
 	logout: function(req, res) {
 		req.logout();
 		res.send('logout successful');
+	},
+
+	//blueprints are not enabled unless model exists - does not in this case
+	blueprints: {
+		//expose route for each method
+		actions: true,
+
+		//expose restful api
+		rest: true,
+
+		//expose crud shortcuts
+		shortcuts:true
 	}
 };
