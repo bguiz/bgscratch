@@ -6,14 +6,26 @@
  *
  */
 
+var bcrypt = require('bcrypt');
+var SALT_LENGTH = 10;
+
 module.exports = {
-
-  attributes: {
-  	
-  	/* e.g.
-  	nickname: 'string'
-  	*/
-    
-  }
-
+	attributes: {
+		username: {
+			type: 'string',
+			required: true,
+			unique: true
+		},
+		password: {
+			type: 'string',
+			required: true
+		},
+		toJSON: function() {
+			var obj = this.toObject();
+			if ('undefined' !== obj.password) {
+				delete obj.password;
+			}
+			return obj;
+		}
+	}
 };
