@@ -27,5 +27,20 @@ module.exports = {
 			}
 			return obj;
 		}
+	},
+
+	beforeCreate: function(user, callback) {
+		bcrypt.genSalt(SALT_LENGTH, function(err, salt) {
+			bcrypt.hash(user.password, salt, function(err, hash) {
+				if (err) {
+					console.log(err);
+					callback(err);
+				}
+				else {
+					user.password = hash;
+					callback(null, user);
+				}
+			});
+		}
 	}
 };
