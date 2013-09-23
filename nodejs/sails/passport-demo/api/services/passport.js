@@ -28,3 +28,15 @@ function findByUsername(uname, callback) {
 		}
 	});
 }
+
+//whn serializing/ deserializing the sessions to persist login state,
+//we only need to store the user IDs 
+passport.serializeUser(function(user, done) {
+	done(null, user.id)
+});
+
+passport.deserializeUser(function(id, done) {
+	findById(id, function(err, user) {
+		done(err, user);
+	});
+});
