@@ -40,3 +40,37 @@ passport.deserializeUser(function(id, done) {
 		done(err, user);
 	});
 });
+
+passport.use(
+	(new (passportLocal.Strategy)(
+		function(username, password, done) {
+			process.nextTick(function() {
+				findByUsername(username, function(err, user) {
+					if (err) {
+						return done(null, err);
+					}
+					if (! user) {
+						return done(null, false, {
+							message: 'Unknown user ' + username
+						});
+					}
+					bcrypt.compare(password, user.password, function(err, res) {
+						if (! res) {
+							return done(null, false, {
+								message: 'Invalid password'
+							});
+						}
+						var returnUser = {
+							username: user.username,
+							createdAt: user.createdAt,
+							id: user.id
+						};
+						return done(null, returnUser, {
+							message: 'Logged in successfully'
+						});
+					});
+				})
+			});
+		}
+	))
+);
