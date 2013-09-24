@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Ordr: Rstaurant Mnu Systm</title>
+
+    <!-- Included CSS Files (Compressed) -->
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+  
+  <!-- ember is tightly integrated with the handlebars templating system ==> type="text/x-handlebars"
+  No live reload, refresh the browser (localhost:3000)
+  If no text appears, "Inspect element" in chrome dev tools and see console
+  -->
+  <!--
+  By default, the very first handlebars template defined will be used as the application template, but we can also explicitly define its id as application.
+  Note that in 1.0.0 you can just use id instead of data-template-name
+  -->
+  <script type="text/x-handlebars" data-template-name="application">
+    <!--
+    Handlebars use double squiggly braces to render values, variables, or things with special meaning in templates.
+    `outlet` is one of them - a placeholder for the rendered output of other (child) controllers... like yield in rails
+    -->
+    <div class="row">
+      <h1>Ordr</h1>
+      <hr />
+      <p>{{outlet}}</p>
+    </div>    
+  </script>
+
+  <!--
+  This template gets rendered through the outlet of the application template; whenever the index route is active
+  This is when the URL is #/
+  -->
+  <script type="text/x-handlebars" data-template-name="index">
+    Hello, Ember
+  </script>
+
+  <!--
+  template to handle the #/tables route
+  -->
+  <script type="text/x-handlebars" data-template-name="tables">
+    <div class="row">
+      <div class="four columns" id="tables">
+        <!--
+        a partial is similar to an outlet, in that it designates where other templates may render within it;
+        the main difference is that the same controller is used by the partial and the parent template that creates it
+        its main utility is in splitting up larger more complex templates into smaller, more manageable ones
+        note that the other reason why we use partials is because it can be reused
+        -->
+        {{partial "tableMenu"}}
+      </div>
+      <!--
+      Remember that the table resource is nested within the tables resource is the router - so the outlet here will render a table template
+      When we go directly to the url #/tables/4, ember will load both the tables resource for this template (tables) and the table resource for the child template (table)
+      Ember assumes that if resources are nested, you will want to display the data all the way up the present hierarchy
+      this is the master detail patern
+        - master shows the list of all models - shows a limited amount of info about each, serves as navigation
+        - detail shows the info about a single model - shows all the information about the model
+        - by keeping all data up the hierarchy in memory, ember supports this pattern well
+      -->
+      <div class="eight columns" id="order">
+        {{outlet}}
+      </div>
+    </div>
+  </script>
+
+  <!--
+  note that the id of the templates for a partials are prepended with an underscore
+  -->
+  <script type="text/x-handlebars" data-template-name="_tableMenu">
+    <h2>Tables</h2>
+    <!--
+    we use the controller to proxy its model data.
+    since this template`s controller is an array controller we iterate over a list of models
+    -->
+    <!--
+    log the controller to see the controller object in console
+    simply render the controller to see the controller name - which can be used to identify whether it is generated or defined by you, and of course also to double check that we are using the right controller
+    -->
+    <!--
+    { {log controller}}
+    { {controller}}
+    -->
+    {{#each table in controller}}
+      <!-- displaying just the ids for now -->
+      {{#linkTo "table" table class="panel six columns"}}
+        <!--
+        The linkTo helper takes 2 arguments:
+        1. The name of the resource we defined in the router - must be quoted (string)
+        2. The model object that will be used to populate the resource - should be a model variable
+        -->
+        <!--
+        Any other HTML attributes can go within the linkTo helper
+        Ember`s linkTo automatically toggles a CSS class of active only the currently selected one
+        Refresh the page and notice that when you click on each, the URL hash fragment updates and its colour is toggled
+        Similarly, if you update the URL, the current table is recoloured as it is active
+        -->
+        {{table.id}}
+      {{/linkTo}}
+    {{/each}}
+  </script>
+
+  <!--
+  We have a table route already, but to display content we will also need s table view
+  A table view is generated by ember when a table template is specified (and the route is also specified)
+  For now we are simply displaying the id, since we do not have any extra data at this stage
+  -->
+  <script type="text/x-handlebars" data-template-name="table">
+      <div class="row">
+          <div class="three columns">
+            <!--
+            render is a special handlebars helper - it:
+            - find the matching controller (food controller)
+            - and its data
+            - set up a new context
+            - render a template (food) using the controller, data, and context
+            -->
+            {{render "food"}}
+          </div>
+          <div class="nine columns">
+              <!--
+              log the controller to see the controller object in console
+              simply render the controller to see the controller name - which can be used to identify whether it is generated or defined by you, and of course also to double check that we are using the right controller
+
+              <!--
+              { {log controller}}
+              { {controller}}
+              -->
+              <h2>Table <span>{{id}}</span></h2>
+              <!--
+              This will render the tab template just defined below - without any data for now
+              This needs to be backed by a custom controller,
+              because the tab is not defined as a resource in the router.
+              We do not need to load the data for this separately, because the table model
+              already references a tab model.
+              The render handlebar takes a first argument, a string that is the name of the
+              template this is to be rendered,
+              and a second argument, the variable of the model to pass to that template.
+              -->
+              {{render "tab" tab}}
+          </div>
+      </div>
+  </script>
+
+  <!--
+  new template to display the food items ordered by that particular table
+  -->
+  <script type="text/x-handlebars" data-template-name="tab">
+      <ul id="customer-tab">
+          {{#each tabItem in tabItems}}
+          <li>
+              <h3>
+                  {{tabItem.food.name}} <span>{{money tabItem.cents}}</span>
+              </h3>
+          </li>
+          {{else}}
+              <!--
+              the each handlebars has an else section, for when the list to iterate over is empty
+              having a blank state message is good user interface design
+              -->
+              <li>
+                  <h3>Click a food item to add it</h3>
+              </li>
+          {{/each}}
+          <!--
+          We are now going to use a computed property to display the toal price of all items in this tab
+          -->
+          <li>
+              <h3>Total <span>{{money cents}}</span></h3>
+          </li>
+      </ul>
+  </script>
+
+  <!--
+  Using App.Router.router.recognizer.name we have identified that the route #/tables/
+  -->
+  <script type="text/x-handlebars" data-template-name="tables/index">
+      <h2>Please select a table</h2>
+  </script>
+
+  <!--
+  as this template is invoked via render (and not partial) it does not need a prefix of _
+  it also does not share the same context as its parent template (table) -
+  it has its own controller with proxies a different set of data
+  -->
+  <script type="text/x-handlebars" data-template-name="food">
+    <ul id="menu">
+        <!--
+        this is a less verbose alternative to the below
+        - just each controller instead of each food in controller
+        - and just name instead of food.name
+        use this when you do not need to be explicit
+        (extra spaces in front of the squiggly brackets to escape for handlebars)
+        { {#each controller}}
+        <li>
+            <p>
+                { {name}}
+            </p>
+        </li>
+        { {/each}}
+        -->
+        {{#each food in controller}}
+        <li>
+            <p>
+                <!--
+                Note that this template may be rendered without data before it is rendered with data
+                (data may be loaded asynchronously)
+                Furthermore, we need to define the template such that changes to the model can be
+                reflected in the rendered template when they are updated.
+                So this is wrong: <img src="{{food.imageUrl}}" alt=""/>
+                We use bindAttr to solve this problem. You can put any HTML attributes in them
+                but the values for all of them must be strings which will be evaluated as a handlebars expression
+                -->
+                <!--
+                Instead oif a linkTo, here we use an anchor tag to call an action
+                an action takes two parameters, the first is the name (a string) of the action to call,
+                and the second (optional) is the variable of that we pass to this action
+                This action will get called, by default, on the current controller, which is the food controller
+                -->
+                <a href="#" {{action "addFood" food}}>
+                    <img {{bindAttr src="food.imageUrl"}} alt=""/>
+                    <p>{{food.name}}</p>
+                </a>
+            </p>
+        </li>
+        {{/each}}
+    </ul>
+  </script>
+
+    <script src="js/libs/jquery-1.8.3.min.js"></script>
+    <script src="js/libs/handlebars-1.0.0.rc.2.js"></script>
+    <script src="js/libs/ember.js"></script>
+    <script src="js/libs/ember-data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
