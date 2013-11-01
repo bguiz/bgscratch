@@ -1,3 +1,10 @@
+### Tools
+
+sudo add-apt-repository ppa:webupd8team/sublime-text-3
+sudo apt-get update
+sudo apt-get install git git-flow sublime-text-installer
+#without using PPA: download from http://www.sublimetext.com/3
+
 ### In she1l 1
 
 sudo apt-get install python-pip 
