@@ -9,6 +9,8 @@ sudo apt-get install git git-flow sublime-text-installer
 
 sudo apt-get install python-pip 
 pip install django
+which django-admin.py 
+#expected output (not blank): /usr/local/bin/django-admin.py
 
 ### In browser
 
@@ -17,7 +19,7 @@ Make a new git repo called cfe-basic
 ### In shell 2
 
 cd /usr/local/code # or wherever
-git clone git@github.com:YOUR_USERNAME/cfe-basic.git
+git clone git@github.com:YOUR_USERNAME/cfe-basic.git #or other URL
 cd cfe-basic/
 git flow init # accept defaults
 Which branch should be used for bringing forth production releases?
@@ -32,4 +34,14 @@ Support branches? [support/]
 Version tag prefix? [] 
 subl . &
 touch notes.md
+git add $_
 subl $_
+git commit -m "=BG= add initial setup instructions"
+
+### Init the django app
+
+django-admin.py startproject linux_project
+git add linux_project/
+git commit -m "=BG= django admin start project"
+git commit  notes.md -m "=BG= django start project commands"
+
