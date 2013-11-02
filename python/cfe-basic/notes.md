@@ -155,3 +155,14 @@ Installed 0 object(s) from 0 fixture(s)
 #explore clicking around groups and users and sites
 #note that you will get an error when visiting http://127.0.0.1/ as we have not defined a route to handle the root URL "/"
 git commit -am "=BG= create sqlite db, configure access to admin panel"
+
+### create an app
+
+within the main project, we create apps
+each app controls one action or function of the site (best practice)
+e.g. contact us app, user profile app.
+makes it easier to manage coidebase when complexity increases
+
+./manage.py startapp contact
+git add contact
+git commit -am "=BG= start app contact"
