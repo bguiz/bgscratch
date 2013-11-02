@@ -258,3 +258,12 @@ mkdir -p static/static
 mv bootstrap/* static/static/
 git add static/static/ static/templates/base.html
 git commit -am "=BG= downoad twitter bootstrap 2.3.2"
+
+subl basic_code/settings.py
+git commit basic_code/settings.py -m "=BG= add static/static to static dirs"
+
+subl static/templates/base.html
+subl static/templates/form.html
+./manage.py runserver
+#visit http://127.0.0.1:8000/ and makes sure that assets are loading
+git commit -am "=BG= create a base page template from the default twitter bootstrap home page, and the form rendering within it"
