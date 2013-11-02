@@ -215,3 +215,20 @@ Templates are static files
 
 subl basic_code/settings.py
 git commit -am "=BG= set up serving of static files"
+
+Now we are going to get django to collect all the static files
+
+mkdir -p ./static/{template,static-only,media}
+ll ./static/
+./manage.py collectstatic
+
+You have requested to collect static files at the destination
+location as specified in your settings.
+
+This will overwrite existing files!
+Are you sure you want to do this?
+
+Type 'yes' to continue, or 'no' to cancel: yes
+
+git add static
+git commit -am "=BG= collect static"
