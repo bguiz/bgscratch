@@ -45,3 +45,7 @@ git add linux_project/
 git commit -m "=BG= django admin start project"
 git commit  notes.md -m "=BG= django start project commands"
 
+### Configure django app
+
+subl linux_project/linux_project/settings.py
+git commit -am "=BG= configure database"
