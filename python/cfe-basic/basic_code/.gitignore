@@ -1,5 +1,5 @@
 #our local file system database
-linux_project.sqlite
+*.sqlite3
 
 #python compiled files
 **.pyc

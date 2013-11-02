@@ -135,3 +135,23 @@ chmod u+x manage.py
 cp ../linux_project/.gitignore .
 git add .
 git commit -am "=BG= start a new project called basic_code"
+
+subl . &
+subl ./basic_code/settings.py
+touch basic_code.sqlite3
+subl ./basic_code/urls.py
+./manage.py syncdb
+Would you like to create one now? (yes/no): yes
+Username (leave blank to use 'bguiz'): bguiz
+Email address: basic_code@bguiz.com
+Password: #foo
+Password (again): #foo
+Superuser created successfully.
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+#visit http://127.0.0.1/admin
+#should be able to log in with bguiz/foo
+#explore clicking around groups and users and sites
+#note that you will get an error when visiting http://127.0.0.1/ as we have not defined a route to handle the root URL "/"
+git commit -am "=BG= create sqlite db, configure access to admin panel"
