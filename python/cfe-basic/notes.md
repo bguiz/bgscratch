@@ -166,3 +166,9 @@ makes it easier to manage coidebase when complexity increases
 ./manage.py startapp contact
 git add contact
 git commit -am "=BG= start app contact"
+
+subl contact/models.py 
+subl basic_code/settings.py
+./manage.py syncdb
+./manage.py runserver
+git commit -am "=BG= configure site to include contact app, and define a sign up model within it"
