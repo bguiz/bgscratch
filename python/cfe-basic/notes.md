@@ -272,3 +272,7 @@ subl basic_code/urls.py
 ./manage.py collectstatic
 ./manage.py runserver
 git commit -am "=BG= add URL routes to server static contents"
+
+subl static/templates/base.html
+subl static/templates/form.html
+git commit -am "=BG= tweak the style/ layout of the page"

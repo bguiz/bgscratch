@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-	<form action="." method="POST">
-		{% csrf_token %}
-		{{form}}
-		<input type="submit" value="Join" />
-	</form>
+	<div class="row">
+		<div class="span8 puull-left">
+			<img src="http://farm5.staticflickr.com/4110/5067479674_7cc8b66c53_z.jpg">
+		</div>
+		<div class="span4 pull-right">
+			<a id="form"></a><br />
+			<h1>Join the amazingness</h1>
+			<form action="." method="POST">
+				{% csrf_token %}
+				{{form}}
+				<br />
+				<input type="submit" value="Join" class="btn btn-info" />
+			</form>
+		</div>
+	</div>
 {% endblock %}
