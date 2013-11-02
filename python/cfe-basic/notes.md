@@ -202,3 +202,8 @@ touch contact/views.py
 git add $_
 subl $_
 git commit -am "=BG= add view for contact app"
+
+### Add route and for view
+
+subl basic_code/urls.py
+git commit -am "=BG= add route for contact app home view"
