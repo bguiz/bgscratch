@@ -232,3 +232,16 @@ Type 'yes' to continue, or 'no' to cancel: yes
 
 git add static
 git commit -am "=BG= collect static"
+
+### create the template, and test that data is written to the DB
+
+{% csrf_token %} is substitutes in something liek the follwing
+<input="" type="hidden" name="csrfmiddlewaretoken" value="CSW9XNE9koWtpeEyP0hOkw58aBeKXFtN">
+
+git mv static/template{,s}
+subl static/templates/form.html 
+./manage.py runserver
+#visit http://127.0.0.1:8000/ and ensure that both name and email are present
+#enter some vlaues for these, hit submit, and verify that we get redirected to google.com
+#visit http://127.0.0.1:8000/admin/contact/signup/ and verify that the entry just input is contained there
+git commit -am "=BG= create the template, with CSRF token, and test that data is written to the database"
