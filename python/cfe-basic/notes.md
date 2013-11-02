@@ -4,6 +4,9 @@ sudo add-apt-repository ppa:webupd8team/sublime-text-3
 sudo apt-get update
 sudo apt-get install git git-flow sublime-text-installer
 #without using PPA: download from http://www.sublimetext.com/3
+#this directorycan be weherever you like, really
+mkdir -p /usr/local/code
+PP=$_
 
 ### In she1l 1
 
@@ -18,7 +21,7 @@ Make a new git repo called cfe-basic
 
 ### In shell 2
 
-cd /usr/local/code # or wherever
+cd $PP
 git clone git@github.com:YOUR_USERNAME/cfe-basic.git #or other URL
 cd cfe-basic/
 git flow init # accept defaults
@@ -120,3 +123,15 @@ argparse==1.2.1
 wsgiref==0.1.2
 
 git commit notes.md -m "=BG= virtual env"
+
+## Start the basic_code project
+
+cd $PP
+django-admin.py startproject  basic_code
+cd basic_code/
+ls -la
+chmod u+x manage.py 
+./manage.py runserver
+cp ../linux_project/.gitignore .
+git add .
+git commit -am "=BG= start a new project called basic_code"
