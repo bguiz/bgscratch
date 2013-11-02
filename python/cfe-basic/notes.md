@@ -89,3 +89,10 @@ git commit -am "=BG= manage.py syncdb and runserver"
 ### In browser
 
 Visit http://127.0.0.1:8000/
+
+### Ensure we keep a clean git repo
+
+touch .gitignore
+git add $_
+subl $_
+git commit -am "=BG= git ignore"
