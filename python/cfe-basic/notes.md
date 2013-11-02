@@ -267,3 +267,8 @@ subl static/templates/form.html
 ./manage.py runserver
 #visit http://127.0.0.1:8000/ and makes sure that assets are loading
 git commit -am "=BG= create a base page template from the default twitter bootstrap home page, and the form rendering within it"
+
+subl basic_code/urls.py
+./manage.py collectstatic
+./manage.py runserver
+git commit -am "=BG= add URL routes to server static contents"
