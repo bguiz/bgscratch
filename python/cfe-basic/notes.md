@@ -193,3 +193,12 @@ git add $_
 subl $_
 git commit -am "=BG= add form for contact app's sign up model"
 
+### Implement the views
+
+views are how the server handles a visit to your wesbite
+when a request is made, what response should be returned? That's what the view returns 
+
+touch contact/views.py
+git add $_
+subl $_
+git commit -am "=BG= add view for contact app"
