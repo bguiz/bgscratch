@@ -172,3 +172,17 @@ subl basic_code/settings.py
 ./manage.py syncdb
 ./manage.py runserver
 git commit -am "=BG= configure site to include contact app, and define a sign up model within it"
+
+### add contact app to django admin
+
+admin panel is mainly for developer and staff memebers
+end users do not see this
+
+touch contact/admin.py
+git add $_
+subl $_
+./manage.py runserver
+#now visit http://127.0.0.1:8000/admin/contact
+#you can view, list, create, update, and delete
+git commit -am "=BG= configure admin panel for contact app's sign up model"
+
