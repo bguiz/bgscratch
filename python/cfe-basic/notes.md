@@ -96,3 +96,27 @@ touch .gitignore
 git add $_
 subl $_
 git commit -am "=BG= git ignore"
+
+## Set up a virtual environment
+
+Useful to keep track of the proper environment, and control the version numbers of all the modules used
+
+### Commands
+
+pip freeze #global python packages
+cd ~/Documents/
+virtualenv ecommerce
+cd $_
+source bin/activate
+#TODO how to deactivate?
+#notice that now the command prompt is prefixed with (ecommerce)
+pip freeze #python packages only within this virtual environment
+argparse==1.2.1
+wsgiref==0.1.2
+pip install django==1.5.1 # install a specific version of django into this virtual env
+pip freeze
+Django==1.5.1
+argparse==1.2.1
+wsgiref==0.1.2
+
+git commit notes.md -m "=BG= virtual env"
