@@ -186,3 +186,10 @@ subl $_
 #you can view, list, create, update, and delete
 git commit -am "=BG= configure admin panel for contact app's sign up model"
 
+### add form for contact app
+
+touch contact/forms.py
+git add $_
+subl $_
+git commit -am "=BG= add form for contact app's sign up model"
+
