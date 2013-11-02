@@ -207,3 +207,11 @@ git commit -am "=BG= add view for contact app"
 
 subl basic_code/urls.py
 git commit -am "=BG= add route for contact app home view"
+
+### add template for view
+
+Set up serving of static files
+Templates are static files
+
+subl basic_code/settings.py
+git commit -am "=BG= set up serving of static files"
