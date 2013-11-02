@@ -49,3 +49,43 @@ git commit  notes.md -m "=BG= django start project commands"
 
 subl linux_project/linux_project/settings.py
 git commit -am "=BG= configure database"
+cd linux_project/
+ll
+chmod u+x manage.py #make this script executable by the current user
+
+./manage.py syncdb
+Creating tables ...
+Creating table auth_permission
+Creating table auth_group_permissions
+Creating table auth_group
+Creating table auth_user_groups
+Creating table auth_user_user_permissions
+Creating table auth_user
+Creating table django_content_type
+Creating table django_session
+Creating table django_site
+You just installed Django's auth system, which means you don't have any superusers defined.
+Would you like to create one now? (yes/no): yes
+Username (leave blank to use 'bguiz'): bguiz
+Email address: cfe-basic@bguiz.com
+Password: #bar
+Password (again): #bar
+Superuser created successfully.
+Installing custom SQL ...
+Installing indexes ...
+Installed 0 object(s) from 0 fixture(s)
+
+./manage.py runserver
+Validating models...
+
+0 errors found
+November 01, 2013 - 19:10:47
+Django version 1.5.5, using settings 'linux_project.settings'
+Development server is running at http://127.0.0.1:8000/
+Quit the server with CONTROL-C.
+
+git commit -am "=BG= manage.py syncdb and runserver"
+
+### In browser
+
+Visit http://127.0.0.1:8000/
