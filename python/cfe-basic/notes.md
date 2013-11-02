@@ -245,3 +245,16 @@ subl static/templates/form.html
 #enter some vlaues for these, hit submit, and verify that we get redirected to google.com
 #visit http://127.0.0.1:8000/admin/contact/signup/ and verify that the entry just input is contained there
 git commit -am "=BG= create the template, with CSRF token, and test that data is written to the database"
+
+### add bootstrap
+
+wget http://getbootstrap.com/2.3.2/index.html
+wget http://getbootstrap.com/2.3.2/assets/bootstrap.zip
+unzip bootstrap.zip
+rm bootstrap.zip
+rm -r bootstrap
+mv index.html static/templates/base.html
+mkdir -p static/static
+mv bootstrap/* static/static/
+git add static/static/ static/templates/base.html
+git commit -am "=BG= downoad twitter bootstrap 2.3.2"
